@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/common_small_margin"
+        android:gravity="center_vertical">
+
+    <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/user_large_size"
+            android:layout_height="@dimen/user_large_size"
+            android:layout_gravity="center_horizontal"/>
+
+    <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="@dimen/header_text_size"
+            android:layout_marginTop="@dimen/common_small_margin"/>
+
+    <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/subheader_text_size"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/common_small_margin"/>
+
+    <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/subheader_text_size"
+            android:layout_marginTop="@dimen/common_small_margin"/>
+
+</LinearLayout>
