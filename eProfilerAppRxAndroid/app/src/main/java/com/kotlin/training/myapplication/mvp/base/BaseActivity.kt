@@ -1,10 +1,10 @@
 package com.kotlin.training.myapplication.mvp.base
 
 import android.app.Dialog
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import org.jetbrains.anko.alert
-import org.jetbrains.anko.indeterminateProgressDialog
 
 open class BaseActivity : AppCompatActivity(), BaseMvpView {
 
@@ -12,7 +12,10 @@ open class BaseActivity : AppCompatActivity(), BaseMvpView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        progressDialog = indeterminateProgressDialog("Loading... Please wait...")
+        progressDialog = ProgressDialog(this).apply {
+            isIndeterminate = true
+            setMessage("Loading... Please wait...")
+        }
     }
 
     override fun showLoader() {
