@@ -2,17 +2,17 @@ package com.kotlin.training.myapplication.mvp.base
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.indeterminateProgressDialog
 
-open class BaseFragment : Fragment(), BaseMvpView {
+open class BaseActivity : AppCompatActivity(), BaseMvpView {
 
     private lateinit var progressDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        progressDialog = activity!!.indeterminateProgressDialog("Loading... Please wait...")
+        progressDialog = indeterminateProgressDialog("Loading... Please wait...")
     }
 
     override fun showLoader() {
@@ -25,7 +25,7 @@ open class BaseFragment : Fragment(), BaseMvpView {
     }
 
     override fun showTechnicalError() {
-        activity!!.alert("Something went wrong. Please come back later.") {
+        alert("Something went wrong. Please come back later.") {
             title("Oops!")
             yesButton {  }
         }.show()

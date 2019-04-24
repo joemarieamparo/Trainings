@@ -3,14 +3,14 @@ package com.kotlin.training.myapplication.mvp.collaborator
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kotlin.training.myapplication.R
+import com.kotlin.training.myapplication.mvp.base.BaseActivity
 import com.kotlin.training.myapplication.mvp.collaborators.User
 import kotlinx.android.synthetic.main.activity_collaborator.*
 
-class CollaboratorActivity : AppCompatActivity() {
+class CollaboratorActivity : BaseActivity(), CollaboratorMvpView {
 
     companion object {
         const val EXTRA_COLLABORATOR = "EXTRA_COLLABORATOR"
@@ -21,12 +21,14 @@ class CollaboratorActivity : AppCompatActivity() {
             return  intent
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collaborator)
+        CollaboratorPresenter(this).handleIntent(intent)
+    }
 
-         var user = intent.getParcelableExtra(EXTRA_COLLABORATOR) as User
-
+    override fun showCollaboratorInfo(user: User) {
         Glide.with(this)
             .load(user.picture.large)
             .apply(RequestOptions().circleCrop())

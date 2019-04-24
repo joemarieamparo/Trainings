@@ -4,13 +4,13 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-data class UserResponse (
+class UserResponse (
     @SerializedName("results")
     var users: ArrayList<User>
 )
 
 @Parcelize
-data class User (
+class User (
     @SerializedName("name")
     var name : UserName = UserName(),
     @SerializedName("picture")
@@ -24,7 +24,7 @@ data class User (
 ): Parcelable
 
 @Parcelize
-data class UserName (
+class UserName (
     @SerializedName("title")
     var title: String= "",
     @SerializedName("first")
@@ -34,7 +34,7 @@ data class UserName (
 ): Parcelable
 
 @Parcelize
-data class Location (
+class Location (
     @SerializedName("street")
     var street: String = "",
     @SerializedName("city")
@@ -49,7 +49,7 @@ data class Location (
 }
 
 @Parcelize
-data class UserPicture (
+class UserPicture (
     @SerializedName("large")
     var large: String= "",
     @SerializedName("medium")

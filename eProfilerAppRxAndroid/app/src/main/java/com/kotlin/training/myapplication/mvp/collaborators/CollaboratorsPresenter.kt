@@ -1,38 +1,29 @@
 package com.kotlin.training.myapplication.mvp.collaborators
 
 import com.kotlin.training.myapplication.api.ServiceManager
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.kotlin.training.myapplication.mvp.base.BasePresenter
+import com.kotlin.training.myapplication.mvp.base.BaseSubscriber
 
-class CollaboratorsPresenter {
+class CollaboratorsPresenter(var view: CollaboratorsMvpView)
+    : BasePresenter<CollaboratorsMvpView>() {
 
-    var view: CollaboratorsMvpView
-
-    constructor(view: CollaboratorsMvpView) {
-        this.view = view
+    private val userApiService by lazy {
+        ServiceManager().getUserApiService()
     }
-
     fun fetchCollaborators() {
         view.showLoader()
-        ServiceManager()
-            .getUserApiService()
-            .getUsers()
-            .enqueue(object : Callback<UserResponse> {
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                view.showTechnicalError()
-                view.hideLoader()
-            }
-
-            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                if (response.isSuccessful) {
-                    var userResponse = response.body() as UserResponse
-                    view.showCollaborators(userResponse.users)
-                } else {
-                    view.showEmptyMessage()
+        observe(userApiService.getUsers(),
+            object: BaseSubscriber<UserResponse> {
+                override fun onSuccess(response: UserResponse) {
+                    if (!response.users.isEmpty()) view.showCollaborators(response.users)
+                    else view.showEmptyMessage()
+                    view.hideLoader()
                 }
-                view.hideLoader()
-            }
+
+                override fun onError() {
+                    view.showTechnicalError()
+                    view.hideLoader()
+                }
         })
     }
 }

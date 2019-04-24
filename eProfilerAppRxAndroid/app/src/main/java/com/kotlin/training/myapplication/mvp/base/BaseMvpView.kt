@@ -1,6 +1,6 @@
 package com.kotlin.training.myapplication.mvp.base
 
-interface MvpView {
+interface BaseMvpView {
     fun showLoader()
     fun hideLoader()
     fun showTechnicalError()
