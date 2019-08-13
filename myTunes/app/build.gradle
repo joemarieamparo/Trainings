@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android-extensions'
+
+def configuration = rootProject.ext.configuration
+def buildVersions = rootProject.ext.buildVersions
+def app_dependencies = rootProject.ext.dependencies
+def testDependencies = rootProject.ext.test_dependencies
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+android {
+    compileSdkVersion configuration.compileSdkVersion
+    defaultConfig {
+        applicationId configuration.package
+        minSdkVersion configuration.minSdkVersion
+        targetSdkVersion configuration.targetSdkVersion
+        versionCode buildVersions.code
+        versionName buildVersions.name
+        testInstrumentationRunner configuration.testRunner
+
+        buildConfigField("String", "SERVER_URL", "\"https://itunes.apple.com/\"")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation app_dependencies.kotlin_stdlib
+    implementation app_dependencies.material_design
+    implementation app_dependencies.constraint_layout
+
+    //dagger-android
+    implementation app_dependencies.dagger_android
+    implementation app_dependencies.dagger_support
+    kapt app_dependencies.dagger_processor
+    kapt app_dependencies.dagger_compiler
+
+    //retrofit
+    implementation app_dependencies.retrofit
+    implementation app_dependencies.retrofit_converter
+    implementation app_dependencies.retrofit_courotines_converter
+
+    //glide
+    implementation app_dependencies.glide
+    kapt app_dependencies.glide_processor
+
+    //gson
+    implementation app_dependencies.gson
+
+    //coroutines
+    implementation app_dependencies.coroutines_android
+    implementation app_dependencies.coroutines_core
+
+    //room
+    implementation app_dependencies.room
+    kapt app_dependencies.room_processor
+
+    //butterknife
+    implementation app_dependencies.butterknife
+    kapt app_dependencies.butterknife_processor
+
+    //test libraries
+    testImplementation testDependencies.junit
+}

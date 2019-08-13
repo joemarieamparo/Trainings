@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">myTunes</string>
+    <string name="large_text"></string>
+    <string name="action_settings">Settings</string>
+    <string name="empty_list_message">No movie found. Tap to reload.</string>
+    <string name="fetch_msg">We are loading your movies...</string>
+    <string name="reload_msg">Tap to reload.</string>
+    <string name="connection_error_title">Connection Error</string>
+    <string name="connection_error_msg">Please check your internet connection. Retry?</string>
+    <string name="technical_error_title">Oops!</string>
+    <string name="technical_error_msg">We are unable to complete your request. Retry?</string>
+    <string name="mytunes_movies">myTune Movies</string>
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="secure_distance_xsmall">5dp</dimen>
+    <dimen name="secure_distance_small">7dp</dimen>
+    <dimen name="secure_distance">15dp</dimen>
+    <dimen name="secure_distance_medium">17dp</dimen>
+    <dimen name="secure_distance_large">21dp</dimen>
+    <dimen name="secure_distance_xlarge">34dp</dimen>
+    <dimen name="secure_distance_xxlarge">42dp</dimen>
+    <dimen name="secure_distance_xxxlarge">63dp</dimen>
+    <dimen name="secure_distance_double_xxlarge">86dp</dimen>
+    <dimen name="secure_distance_double_xxxlarge">126dp</dimen>
+
+    <dimen name="photo_height">160dp</dimen>
+    <dimen name="photo_width">120dp</dimen>
+</resources>
