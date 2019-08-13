@@ -3,6 +3,7 @@ package com.example.mytunes.utils
 import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.mytunes.app.MyTunesApplication
 import com.example.mytunes.dependencyinjection.modules.ActivityComponent
@@ -45,3 +46,10 @@ fun Context.createAlertDialog(title: String, msg: String, posMsg: Int, posAction
     return builder.create()
 }
 
+fun View.gone() {
+    this.visibility = View.GONE
+}
+
+fun View.show() {
+    this.visibility = View. VISIBLE
+}

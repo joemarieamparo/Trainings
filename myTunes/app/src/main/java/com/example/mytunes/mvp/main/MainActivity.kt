@@ -1,7 +1,6 @@
 package com.example.mytunes.mvp.main
 
 import android.os.Bundle
-import android.view.View
 import com.example.mytunes.mvp.MainMvpView
 import com.example.mytunes.mvp.base.BaseActivity
 import javax.inject.Inject
@@ -14,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import butterknife.ButterKnife
 import butterknife.OnClick
+import com.example.mytunes.utils.gone
+import com.example.mytunes.utils.show
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -56,8 +57,8 @@ class MainActivity : BaseActivity(), MainMvpView {
 
     @OnClick(R.id.empty_view)
     fun onLoadClicked() {
-        recycler_view.visibility = View.VISIBLE
-        empty_view.visibility = View.GONE
+        recycler_view.show()
+        empty_view.gone()
         presenter.getMovies()
     }
 
@@ -71,13 +72,13 @@ class MainActivity : BaseActivity(), MainMvpView {
     }
 
     override fun showMovies(items: List<MovieAdapter.MovieItem>) {
-        recycler_view.visibility = View.VISIBLE
+        recycler_view.show()
         moviesAdapter.update(items)
     }
 
     override fun showEmptyList() {
-        recycler_view.visibility = View.GONE
-        empty_view.visibility = View.VISIBLE
+        recycler_view.gone()
+        empty_view.show()
     }
 
     override fun showConnectionError() {
